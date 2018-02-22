@@ -8,7 +8,7 @@ defmodule TextClient.Player do
   
   def play(%State{tally: %{game_state: :lost}} = game) do
     show_word = 
-      game.game_service.letters
+      game.tally.word
       |> Enum.join()
       |> String.upcase
 
@@ -54,6 +54,7 @@ defmodule TextClient.Player do
   defp exit_with_message(game_state, msg) do
     Mix.Shell.IO.cmd("clear")
     Summary.print_to_screen(game_state, msg)
+    Process.sleep(500)
     exit(:normal)
   end
 

@@ -10,10 +10,11 @@ defmodule TextClient.MixProject do
       deps: deps()
     ]
   end
-
+ 
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
+      included_applications: [ :hangman ], # load code for app but do NOT start it.
       extra_applications: [:logger]
     ]
   end
